@@ -71,7 +71,7 @@ im = plt.imshow(julia, interpolation='none', animated=True)
 
 def init():
     julia = julia_set(xmin, xmax, ymin, ymax, width, height, maxiter,c=c, method=method)
-    im.set_data(julia)
+    im.set_array(getattr(cm, colormap)(julia))
     return [im]
 
 def animate(i):
