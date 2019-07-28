@@ -25,7 +25,7 @@ def play_game(N, w=0.5, corners=[(0, 0), (0.5, np.sqrt(3)/2), (1, 0)]):
     n_corners = len(corners)
     
     for i in range(1, N):
-        k = randint(0, n_corners-1) # random triangle vertex
+        k = randint(0, n_corners-1) # random polygon vertex
         x[i], y[i] = midpoint(corners[k], (x[i-1], y[i-1]), w)
     return x, y
 
