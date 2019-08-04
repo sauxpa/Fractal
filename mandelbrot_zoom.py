@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# need to plot in a separate window to see the animation
-#get_ipython().run_line_magic('matplotlib', 'qt')
-
 import argparse, sys
-
 from mandelbrot import mandelbrot_set
 import numpy as np
 from PIL import Image
@@ -14,9 +10,6 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import animation
 plt.style.use('dark_background')
-
-# matplotlib.use('TkAgg')  # or 'GTK3Cairo'
-# matplotlib.use('GTK3Cairo')  # or 'GTK3Cairo'
 
 # Get arguments
 parser=argparse.ArgumentParser()

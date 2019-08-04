@@ -2,30 +2,31 @@
 # coding: utf-8
 
 import numpy as np
-from numba import jit, guvectorize, float64, float32, complex128, complex64, int32, uint8
+from numba import jit, guvectorize, complex128, int32
 
 # Mandelbrot set
 
-@jit(int32(complex64, int32))
+@jit(int32(complex128, int32))
 def mandelbrot_iter(z, maxiter):
     nreal = 0
     real = 0
     imag = 0
     for n in range(maxiter):
-        nreal = real*real - imag*imag + z.real
-        imag = 2*real*imag + z.imag
-        real = nreal;
-        if real * real + imag * imag > 4.0:
+        real2 = real*real
+        imag2 = imag*imag
+        if real2 + imag2 > 4.0:
             return n
+        imag = 2*real*imag + z.imag
+        real = real2 - imag2 + z.real
     return 0
 
-@guvectorize([(complex64[:], int32[:], int32[:])], '(n),()->(n)', target='parallel')
+@guvectorize([(complex128[:], int32[:], int32[:])], '(n),()->(n)', target='parallel')
 def mandelbrot_numpy(z, maxit, output):
     maxiter = maxit[0]
     for i in range(z.shape[0]):
         output[i] = mandelbrot_iter(z[i],maxiter)
 
-@guvectorize([(complex64[:], int32[:], int32[:])], '(n),(n)->(n)', target='cuda')
+@guvectorize([(complex128[:], int32[:], int32[:])], '(n),(n)->(n)', target='cuda')
 def mandelbrot_numpy_cuda(z, maxit, output):
     maxiter = maxit[0]
     for i in range(z.shape[0]):
