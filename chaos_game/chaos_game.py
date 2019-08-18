@@ -29,12 +29,15 @@ def play_game(N, w=0.5, corners=[(0, 0), (0.5, np.sqrt(3)/2), (1, 0)]):
         x[i], y[i] = midpoint(corners[k], (x[i-1], y[i-1]), w)
     return x, y
 
-def render_image(x, y, size):
+def render_image(x, y, size, bg=(0, 0, 0), fg=(255, 255, 255)):
     x_im = np.floor(x*size).astype(int)
     y_im = np.floor(y*size).astype(int)
     square = np.empty([size, size, 3], dtype = np.uint8) 
-    color = np.array([255, 255, 255], dtype = np.uint8) 
+    color = np.array(fg, dtype = np.uint8) 
     square.fill(0) 
+    square[:,:,0] = bg[0]
+    square[:,:,1] = bg[1]
+    square[:,:,2] = bg[2]
 
     for x_coord, y_coord in zip(x_im, y_im):
         # transpose and flip to render the image with the correct orientation
