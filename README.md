@@ -32,11 +32,14 @@ The diffeobrot set is the set of point c in the complex plane such that this sys
 ## Julia set 
 Dual sets of the Mandelbrot set: https://en.wikipedia.org/wiki/Julia_set.
 
+<img src="./julia/images/julia_0.285_0.01.png"
+     style="float: left; margin-right: 10px;" />
+     
 ## Julia quaternion
 Same definition as complex Julia sets, only applied with quaternion algebra. Visualization is projected from 4d to 3d via slicing, then displayed as a 2d moving shape.
 
 ## Magnetbrot
 Yet another variation on Mandelbrot, this time with a rational update function rather than a polynomial one.
-
+     
 ## Mandelbrot
 Dual set of Julia sets: https://en.wikipedia.org/wiki/Mandelbrot_set.
