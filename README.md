@@ -29,6 +29,10 @@ Iterative fractal deformation of an initial shape: https://en.wikipedia.org/wiki
 <img src="./chaos_game/sierpinski_batman.gif"
      style="float: left; margin-right: 10px;" />
      
+
+<img src="./chaos_game/sierpinski_dachshund.gif"
+     style="float: left; margin-right: 10px;" />
+     
 ## Diffeobrot set
 Continuous time analogue of the Mandelbrot equation:
 dz(t)/dt + z(t) = z(t-t0)^2 + c, with z(0) = 0.
